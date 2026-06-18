@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Cairo', 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Outfit', monospace;
+
+  /* Custom Gym Colors */
+  --color-gym-gold: #ffd700;
+  --color-gym-gold-dark: #d4af37;
+  --color-gym-black: #0a0a0a;
+  --color-gym-dark-gray: #121212;
+  --color-gym-card: #1c1c1e;
+  --color-gym-card-hover: #262629;
+  --color-gym-gray: #8e8e93;
+
+  /* Border radius adjustments */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+/* Base custom styles & scrollbar hidden for native mobile app feel */
+@layer base {
+  html, body {
+    background-color: #050505;
+    color: #ffffff;
+    font-family: 'Cairo', 'Outfit', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  /* Hide scrollbars but keep functionality */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Styling inputs with Outfit font for numbers */
+  input[type="number"], input[type="tel"] {
+    font-family: 'Outfit', 'Cairo', sans-serif;
+  }
+}
+
+/* Custom animations and glow effects */
+.gold-glow {
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.25);
+}
+
+.gold-glow-strong {
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+}
+
+.gold-text-glow {
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.glass-panel {
+  background: rgba(28, 28, 30, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 215, 0, 0.08);
+}
+
+.glass-panel-heavy {
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 215, 0, 0.12);
+}
+
+/* Keyframes for premium animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+  }
+}
+
+.pulse-qr {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+@keyframes logoEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-10deg);
+    filter: brightness(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05) rotate(5deg);
+    filter: brightness(0.5) drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+  }
+}
+
+.animate-logo {
+  animation: logoEntrance 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* Remove default list styles inside tailwind */
+ul {
+  padding-right: 0;
+}
